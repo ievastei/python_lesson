@@ -57,4 +57,35 @@ def maximum(a, b, c):
 a = 10
 b = 14
 c = 12
-print(maximum(a, b, c))
+print(maximum(a, b,c)
+      
+task for homework :
+      import os
+import datetime
+
+# Create the input screen
+name = input("Enter your name: ")
+surname = input("Enter your surname: ")
+id_num = input("Enter your ID number: ")
+
+# Create the directory name based on today's date
+today = datetime.date.today().strftime("%Y-%m-%d")
+directory_name = os.path.join(os.getcwd(), today)
+
+# Create the directory if it doesn't exist
+if not os.path.exists(directory_name):
+    os.makedirs(directory_name)
+
+# Create the file name based on the ID number
+file_name = os.path.join(directory_name, f"{id_num}.txt")
+
+# Write the user's information to the file
+with open(file_name, "w") as f:
+    f.write(f"Name: {name}\n")
+    f.write(f"Surname: {surname}\n")
+    f.write(f"ID number: {id_num}\n")
+
+# Output all saved information on the screen
+for filename in os.listdir(directory_name):
+    with open(os.path.join(directory_name, filename), "r") as f:
+        print(f.read())
